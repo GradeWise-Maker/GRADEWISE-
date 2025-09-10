@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GradeWise - Online Marking System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>GradeWise - Online Marking System</h1>
+    <p class="subtitle">Simplifying Teachers' Work, Empowering Students</p>
+    <nav>
+      <button onclick="showSection('home')">Home</button>
+      <button onclick="showSection('grade')">Grade</button>
+    </nav>
+  </header>
+
+  <!-- Leaderboard -->
+  <section id="home" class="page-section">
+    <h2>Leaderboard - Ranked by Overall Score</h2>
+    <table id="leaderboardTable">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Student Name</th>
+          <th>Subjects Marked</th>
+          <th>Average Score (%)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <!-- Grading -->
+  <section id="grade" class="page-section hidden">
+    <h2>Mark a Student</h2>
+
+    <label for="markingLevel">Select Marking Level:</label>
+    <select id="markingLevel">
+      <option value="lenient">Lenient</option>
+      <option value="medium">Medium</option>
+      <option value="hard">Hard</option>
+    </select>
+
+    <label for="subjectSelect">Select Subject:</label>
+    <select id="subjectSelect" onchange="showTeacher()">
+      <option value="ENG">English</option>
+      <option value="MTC">Mathematics</option>
+      <option value="BIO">Biology</option>
+      <option value="CHEM">Chemistry</option>
+      <option value="HISTORY">History</option>
+      <option value="CRE">CRE</option>
+      <option value="HYT">HYT</option>
+      <option value="ESSAY">Essay</option>
+    </select>
+
+    <p id="teacherName"><strong>Teacher:</strong> <span id="teacherDisplay"></span></p>
+
+    <label for="studentSelect">Select Student Name:</label>
+    <select id="studentSelect"></select>
+
+    <!-- Answer prompt (not for essay) -->
+    <div id="promptBox">
+      <label for="answerPrompt">Enter Answer Prompt (one per line, without numbering):</label>
+      <textarea id="answerPrompt" rows="6"></textarea>
+    </div>
+
+    <!-- Essay title (for essay only) -->
+    <div id="essayBox" class="hidden">
+      <label for="essayTitle">Essay Title:</label>
+      <input type="text" id="essayTitle" placeholder="Enter essay title">
+    </div>
+
+    <label for="studentWork">Enter Student Work:</label>
+    <textarea id="studentWork" rows="6"></textarea>
+
+    <button onclick="markAndGrade()">MARK AND GRADE</button>
+
+    <div id="resultBox"></div>
+  </section>
+
+  <footer>
+    <p>© GradeWise by @ainepaul</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
